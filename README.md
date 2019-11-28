@@ -202,3 +202,4 @@ Epoch 50/50
 390/390 [==============================] - 33s 84ms/step - loss: 0.3765 - acc: 0.8652 - val_loss: 0.5319 - val_acc: 0.8275
 Model took 1642.00 seconds to train
 ```
+![image](https://github.com/sridevibonthu/EIP_Session3/blob/master/network1.JPG)
