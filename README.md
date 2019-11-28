@@ -5,12 +5,62 @@ Assignment 3
 After running the base network for 50 epochs the validation accuracy is - 82.66
 
 ![image](https://github.com/sridevibonthu/EIP_Session3/blob/master/basenwaccuracy.JPG)
-ldflwsdklf
-dsfsdlfkl
 
 ```python
-paste the model
-```
+model = Sequential()
+model.add(SeparableConvolution2D(48, 3, 3, border_mode='same', input_shape=(32, 32, 3))) #(outputsize - 32, Receptive Field - 3)
+model.add(Activation('relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.08))
+
+model.add(SeparableConvolution2D(48, 3, 3)) #(30, 5)
+model.add(Activation('relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.08))
+
+model.add(MaxPooling2D(pool_size=(2, 2))) #(15, 6)
+model.add(Dropout(0.2))
+
+model.add(SeparableConvolution2D(96, 3, 3, border_mode='same')) #(15, 10)
+model.add(Activation('relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.08))
+
+model.add(SeparableConvolution2D(96, 3, 3)) #(13, 14)
+model.add(Activation('relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.08))
+
+model.add(MaxPooling2D(pool_size=(2, 2))) #(6, 16)
+model.add(Dropout(0.2))
+
+model.add(SeparableConvolution2D(192, 3, 3, border_mode='same')) #(6, 24)
+model.add(Activation('relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.08))
+
+model.add(SeparableConvolution2D(192, 3, 3)) #(4, 32)
+model.add(Activation('relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.08))
+
+model.add(MaxPooling2D(pool_size=(2, 2))) #(2, 36)
+model.add(Dropout(0.2))
+
+model.add(SeparableConvolution2D(96, 2, 2)) #(1, 44)
+model.add(Activation('relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.08))
+
+model.add(SeparableConvolution2D(num_classes, 1, 1)) #(1, 44)
+model.add(Activation('relu'))
+
+model.add(Flatten())
+model.add(Activation('softmax'))
+
+# Compile the model
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.summary()```
 
 ```python
 Model: "sequential_12"
