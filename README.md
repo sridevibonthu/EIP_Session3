@@ -6,6 +6,9 @@ After running the base network for 50 epochs the validation accuracy is - 82.66
 
 ![image](https://github.com/sridevibonthu/EIP_Session3/blob/master/basenwaccuracy.JPG)
 
+#My network
+Here I have used Separable Convolution, Batch Normalization, Dropout and removed Dense layers at the end which were present in the vgg6 model architecture. this has beaten base network by crossing 83% of validation accuracy. But the parameters reached 100,021. I have removed biases and made it 99,243 in my second network. I have copied both the networks here.
+
 ```python
 model = Sequential()
 model.add(SeparableConvolution2D(48, 3, 3, border_mode='same', input_shape=(32, 32, 3))) #(outputsize - 32, Receptive Field - 3)
